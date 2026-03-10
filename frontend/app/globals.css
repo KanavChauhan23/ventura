@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --orange: #FF6803;
+  --orange-dark: #AE3A02;
+  --bg: #E2E2E0;
+  --black: #0B0501;
+}
+
+* { cursor: none !important; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--black);
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 3px; }
+
+/* Cursor */
+.cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: var(--orange);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--orange);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  opacity: 0.6;
+}
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Agent code block */
+.agent-code {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* Ticker animation */
+.ticker-inner {
+  animation: ticker 28s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Float pill animation */
+.float-pill-1 { animation: float 5s ease-in-out infinite 0s; }
+.float-pill-2 { animation: float 5.5s ease-in-out infinite 0.8s; }
+.float-pill-3 { animation: float 6s ease-in-out infinite 1.4s; }
+.float-pill-4 { animation: float 5.2s ease-in-out infinite 0.4s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Scroll indicator */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.3; transform: translateY(4px); }
+}
+
+.scroll-dot::after {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(11, 5, 1, 0.4);
+  margin: auto;
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+
+/* Agent card hover glow */
+.agent-card {
+  transition: border-color 0.3s, transform 0.3s;
+}
+.agent-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #FF6803, transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.agent-card:hover::before { opacity: 1; }
+
+/* Loading animation */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loading-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Progress bar */
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: var(--progress); }
+}
+.progress-bar {
+  animation: progressFill 1.5s ease-out forwards;
+}
+
+/* Pulse dot */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
