@@ -22,8 +22,8 @@ app = FastAPI(
     title="Ventura AI API",
     description="Autonomous AI Company Builder — Backend API",
     version="1.0.0",
-    docs_url="/docs" if settings.ENV != "production" else None,
-    redoc_url="/redoc" if settings.ENV != "production" else None,
+    docs_url="/docs",
+    redoc_url="/redoc",
     lifespan=lifespan,
 )
 
