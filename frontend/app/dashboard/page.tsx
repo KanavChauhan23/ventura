@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import toast from 'react-hot-toast'
 import { api } from '@/lib/api'
+import Cursor from '@/components/Cursor'
 
 type AgentStatus = 'idle' | 'running' | 'done' | 'error'
 
@@ -100,6 +101,7 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-brand-dark text-white" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+      <Cursor />
       {/* Nav */}
       <nav className="flex items-center justify-between px-8 py-5 border-b border-white/5">
         <Link href="/" className="flex items-center gap-3 font-syne font-black text-lg">
